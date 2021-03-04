@@ -26,7 +26,10 @@ export default function Cart(props) {
   const [cityError, setCityError] = useState("");
   const [state, setState] = useState();
   const [stateFlag, setStateFlag] = useState(false);
+  console.log(useContext(cartContext));
   const [stateError, setStateError] = useState("");
+
+  const { cartBooks } = useContext(cartContext);
 
   const makeInitial = () => {
     setNameFlag(false);
@@ -139,7 +142,6 @@ export default function Cart(props) {
   const handleCart = () => {
     this.props.history.push("/place");
   };
-  const { cartBooks } = useContext(cartContext);
   console.log("Hieee", cartBooks);
 
   const Continue = () => {
@@ -326,7 +328,7 @@ export default function Cart(props) {
 
         <div className="checkoutbody">
           <div className="Cardcartbody">
-            {cartBooks.map((item) => (
+            {cartBooks?.map((item) => (
               <div className="displaycart">
                 <div class=" cardcart">
                   <img class="card-img-top1" src={bookImg} alt="" />
