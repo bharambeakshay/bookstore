@@ -13,17 +13,14 @@ import Header from './Components/Header/Header';
 const App = (props) => {
   return (
     <Routing history={history}>
-   
-        <Switch>
-          <Route path="/" exact component={Dashboard}{...props}></Route>
-          <Route path="/header" component={Header}{...props}></Route>
-          <Route path="/login"  component={Login}{...props}></Route>
-          <Route path="/signup"  component={Signup}{...props}></Route>
-        <Route path="/cart" component={Cart}{...props}></Route>
-          
+      <Switch>
+        <Route path="/dashboard" exact component={Cart}></Route>
+        <Route path="/header" component={Header}></Route>
+        <Route path="/login" component={Login}></Route>
+        <Route path="/signup" component={Signup}></Route>
+        {/* <Route path="/Cart" component={Cart}></Route> */}
+      </Switch>
 
-        </Switch>
-  
     </Routing >
   );
 };
