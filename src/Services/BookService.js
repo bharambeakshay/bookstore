@@ -1,34 +1,11 @@
-/** @format */
-
-import AxiosService from "./AxiosService";
-
+import Axios from "./AxiosService";
 const baseUrl = process.env.REACT_API_USER_URL;
-
-const header = {
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: localStorage.getItem("Token"),
-  },
-};
+const axios = new Axios();
 
 class BookService {
-  constructor() {
-    this.AxiosService = new AxiosService();
-  }
-
   getBooks = () => {
-    let url = baseUrl.concat("/get/book");
-    const header = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: localStorage.getItem("Token"),
-      },
-    };
-    return this.AxiosService.get(url, true, header);
+    return axios.Get(`${baseUrl}/get/book`);
   };
-
-
-  //dummy  urls from swagger arranged them as per axios
 
   addToCart = (id) => {
     const user = localStorage.getItem("bookStoreToken")
@@ -39,6 +16,14 @@ class BookService {
     });
   };
 
+  // getCartItem = () => {
+  //   const user = localStorage.getItem("bookStoreToken")
+  //   return axios.Get(`${baseUrl}/get_cart_items`, {
+  //     headers: {
+  //       "x-access-token": `{user}`,
+  //     },
+  //   });
+  // };
   getCartItem = () => {
     const user = localStorage.getItem("bookStoreToken")
     return axios.Get(`${baseUrl}/get_cart_items`, {
@@ -62,10 +47,24 @@ class BookService {
     const user = localStorage.getItem("bookStoreToken")
     return axios.Delete(`${baseUrl}/remove_cart_item/${id}`, {
       headers: {
-        "x-access-token": `${user}`,
+        "x-access-token": `${user}`,  
       },
     });
   }
 
 }
-export default new BookService
+
+
+
+export default BookService
+
+
+
+
+
+
+
+
+
+
+

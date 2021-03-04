@@ -1,33 +1,33 @@
-import AxiosService from './AxiosService';
-const baseurl = "https://backend-bookstore.herokuapp.com/bookstore_user";
-const token = localStorage.getItem('Token');
-
-const header = {
-  headers: {
-    "Content-Type": 'application/json',
-    "Authorization": localStorage.getItem('Token')
-  }
-}
+import Axios from "./AxiosService";
+const baseUrl = process.env.REACT_API_USER_URL;
+const axios = new Axios();
 
 class UserServices {
-  constructor() {
-    this.AxiosService = new AxiosService();
-  }
-
-  userRegistration = (Data) => {
-    let headers = {};
-    console.log(header);
-    let url = baseurl.concat(`/registration`);
-    return this.AxiosService.post(url, Data, true, headers);
-  }
-  userLogin = (Data) => {
-    let headers = {};
-    console.log(header);
-    let url = baseurl.concat(`/login`);
-    return this.AxiosService.post(url, Data, true, headers);
-  }
 
 
-  
+
+  userRegistration = (data) => {
+    return axios.Post(`${baseUrl}/registration`, data);
+  };
+
+  userLogin = (data) => {
+    return axios.Post(`${baseUrl}/login`, data);
+  };
 }
-export default new UserServices();
+
+export default new UserServices
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
